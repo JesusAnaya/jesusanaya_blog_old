@@ -1,7 +1,12 @@
+.DS_Store
+
 *.pyc
 *.pyo
 
 *.db
+*.sqlite
 *.sqlite3
 
 *.sublime-*
+
+*.egg-info

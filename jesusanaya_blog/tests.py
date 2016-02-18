@@ -3,7 +3,7 @@ import transaction
 
 from pyramid import testing
 
-from .models import DBSession
+from .models.meta import DBSession
 
 
 class TestMyViewSuccessCondition(unittest.TestCase):
@@ -11,15 +11,13 @@ class TestMyViewSuccessCondition(unittest.TestCase):
         self.config = testing.setUp()
         from sqlalchemy import create_engine
         engine = create_engine('sqlite://')
-        from .models import (
-            Base,
-            MyModel,
-            )
+        from .models.meta import Base
+        from .models import User
         DBSession.configure(bind=engine)
         Base.metadata.create_all(engine)
         with transaction.manager:
-            model = MyModel(name='one', value=55)
-            DBSession.add(model)
+            admin = User(name='admin', password='admin')
+            DBSession.add(admin)
 
     def tearDown(self):
         DBSession.remove()
@@ -38,10 +36,8 @@ class TestMyViewFailureCondition(unittest.TestCase):
         self.config = testing.setUp()
         from sqlalchemy import create_engine
         engine = create_engine('sqlite://')
-        from .models import (
-            Base,
-            MyModel,
-            )
+        from .models.meta import Base
+        from .models import User
         DBSession.configure(bind=engine)
 
     def tearDown(self):

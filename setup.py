@@ -3,24 +3,28 @@ import os
 from setuptools import setup, find_packages
 
 here = os.path.abspath(os.path.dirname(__file__))
-with open(os.path.join(here, 'README.txt')) as f:
+with open(os.path.join(here, 'README.md')) as f:
     README = f.read()
 with open(os.path.join(here, 'CHANGES.txt')) as f:
     CHANGES = f.read()
 
 requires = [
-    'pyramid',
-    'pyramid_chameleon',
-    'pyramid_debugtoolbar',
-    'pyramid_tm',
-    'SQLAlchemy',
-    'transaction',
-    'zope.sqlalchemy',
-    'waitress',
-    ]
+    'pyramid==1.6.1',
+    'pyramid_jinja2==2.6.2',
+    'pyramid_debugtoolbar==2.4.2',
+    'pyramid_tm==0.12.1',
+    'SQLAlchemy==1.0.11',
+    'transaction==1.4.4',
+    'zope.sqlalchemy==0.7.6',
+    'waitress==0.8.10',
+    'wtforms==2.1',
+    'webhelpers2==2.0',
+    'paginate==0.5.2',
+    'paginate_sqlalchemy==0.2.0'
+]
 
 setup(name='jesusanaya_blog',
-      version='0.0',
+      version='0.0.1',
       description='jesusanaya_blog',
       long_description=README + '\n\n' + CHANGES,
       classifiers=[
