@@ -25,3 +25,6 @@ def main(global_config, **settings):
 
     config.scan()
     return config.make_wsgi_app()
+
+
+__version__ = '0.0.1'
